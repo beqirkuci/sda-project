@@ -1,20 +1,26 @@
 package com.sda.orders.orders.controller;
+import com.sda.orders.orders.model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
-@RequestMapping("/billing/")
 public class HelloWorldController {
 
-    @GetMapping("activate")
-    public String getMessagge(@RequestParam(value = "test", required = false) String test) {
+    private static Logger LOG = LoggerFactory
+            .getLogger(HelloWorldController.class);
 
-        try {
-            test.trim();
-            return "ok";
-        } catch (NullPointerException e) {
-            return "EX";
-        }
+    @GetMapping("student")
+    public Student getStudent() {
 
+
+        return Student.builder()
+                .name("Brand")
+                .surname("test")
+                .birthDate(new Date())
+                .email("test@gmail.com").build();
     }
 
 
