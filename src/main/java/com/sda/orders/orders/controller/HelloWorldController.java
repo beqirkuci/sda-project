@@ -1,12 +1,15 @@
 package com.sda.orders.orders.controller;
+
+import com.sda.orders.orders.config.PropertyConfiguration;
 import com.sda.orders.orders.model.Student;
 import com.sda.orders.orders.services.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -16,8 +19,6 @@ public class HelloWorldController {
     private final StudentService studentService;
 
 
-    @Value("${test.value}")
-    private String[] arrayOfStrings;
 
     private static Logger LOG = LoggerFactory
             .getLogger(HelloWorldController.class);
