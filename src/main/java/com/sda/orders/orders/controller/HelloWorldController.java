@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,7 +15,6 @@ import java.util.List;
 public class HelloWorldController {
 
     private final StudentService studentService;
-
 
 
     private static Logger LOG = LoggerFactory
@@ -33,18 +30,22 @@ public class HelloWorldController {
         return new ResponseEntity<List<Student>>(studentService.studentList(),
                 HttpStatus.CREATED);
 
-}
+    }
 
+    @PostMapping("students")
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        return new ResponseEntity<Student>(studentService.addStudent(student),
+                HttpStatus.CREATED);
 
-
+    }
 
     @GetMapping("student/{email}")
     /*
      * Krijoni nje metode ne studentService E cila merr te dhena nga application.properties dhe gjen studentin by Email
      * Perdorni Student si endpoint
      * */
-    public Integer getMessagge(@RequestParam Integer number1,@RequestParam Integer number2){
-        return number1+ number2;
+    public Integer getMessagge(@RequestParam Integer number1, @RequestParam Integer number2) {
+        return number1 + number2;
     }
 
 
