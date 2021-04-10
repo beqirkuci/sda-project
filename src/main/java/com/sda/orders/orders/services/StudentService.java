@@ -29,4 +29,12 @@ public class StudentService {
         // call repository and save
       return  studentRepository.save(student);
     }
+
+    public Student updateStudent(Student student) {
+        return  studentRepository.save(student);
+    }
+
+    public void deleteStudent(Integer id) {
+          studentRepository.deleteById(id);
+    }
 }
