@@ -1,6 +1,4 @@
 package com.sda.orders.orders.controller;
-
-import com.sda.orders.orders.config.PropertyConfiguration;
 import com.sda.orders.orders.model.Student;
 import com.sda.orders.orders.services.StudentService;
 import org.slf4j.Logger;
@@ -9,18 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-public class HelloWorldController {
+public class OrderController {
 
     private final StudentService studentService;
 
 
     private static Logger LOG = LoggerFactory
-            .getLogger(HelloWorldController.class);
+            .getLogger(OrderController.class);
 
-    public HelloWorldController(StudentService studentService) {
+    public OrderController(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -33,7 +32,7 @@ public class HelloWorldController {
     }
 
     @PostMapping("students")
-    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student) {
         return new ResponseEntity<Student>(studentService.addStudent(student),
                 HttpStatus.CREATED);
 
