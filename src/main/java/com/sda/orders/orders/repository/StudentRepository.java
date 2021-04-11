@@ -3,6 +3,10 @@ import com.sda.orders.orders.model.Student;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface StudentRepository extends CrudRepository<Student, Integer> {
+
+    List<Student> findByDepartment_name(String depName);
 }

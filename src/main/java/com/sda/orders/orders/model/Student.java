@@ -1,18 +1,15 @@
 package com.sda.orders.orders.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 @Data
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
@@ -24,7 +21,8 @@ public class Student {
     private String email;
 
     @ManyToOne(optional = false)
-    private Departament departament;
+    private Department department;
+
     public Student() {
     }
 }

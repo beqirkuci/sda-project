@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class StudentController {
     @GetMapping("students")
     public ResponseEntity<List<Student>> getStudent() {
         return new ResponseEntity<List<Student>>(studentService.studentList(),
-                HttpStatus.CREATED);
+                HttpStatus.OK);
     }
 
     @PostMapping("students")
@@ -41,8 +42,12 @@ public class StudentController {
         studentService.deleteStudent(id);
         return new ResponseEntity<String>(HttpStatus.OK);
     }
+    @GetMapping("studentsbydepartment/{depName}")
+    public List<Student> getstudentsByDepName(@PathVariable String depName){
 
+      return studentService.getstudentsByDepName(depName);
 
+    }
 
 
 }
