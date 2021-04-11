@@ -1,19 +1,23 @@
 package com.sda.orders.orders.controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.sda.orders.orders.model.Users;
+import com.sda.orders.orders.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 public class UserController {
-    @GetMapping("user")
-    public String hello() {
-        return "Hello User";
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("register")
+    public Users createUser(@RequestBody Users users) {
+        return userService.create(users);
     }
 
-    @GetMapping("admin")
-    public String hi() {
-        return "Hello ADMIN";
+    @GetMapping ("register")
+    public String get() {
+        return "hello Brand";
     }
-
-
-
 
 }
