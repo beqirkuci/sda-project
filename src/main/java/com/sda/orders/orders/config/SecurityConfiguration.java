@@ -42,12 +42,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/register").permitAll()
+                .antMatchers("/api*").permitAll();
+                /*.antMatchers(HttpMethod.POST,"/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().permitAll();*/
     }
 }
 
